@@ -1,10 +1,10 @@
 import React from 'react';
 import axios from 'axios';
-//import {Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 
-class Vendors extends React.Component {
+class AddVendors extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -18,7 +18,7 @@ class Vendors extends React.Component {
            addressError:'',
            Mobile:'',
            mobileError:'',
-            //redirect: false
+            redirect: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleName = this.handleName.bind(this);
@@ -35,8 +35,8 @@ class Vendors extends React.Component {
             companyError:'',
             emailError: '',
             addressError:'',
-            mobileError:''
-            
+            mobileError:'',
+            redirect: false
         };
         //console.log(errors);
         if (this.state.Name.length < 5) {
@@ -103,10 +103,10 @@ class Vendors extends React.Component {
             }
             axios.post('http://localhost:3001/vendors', submitValue).then((response) => {
                 console.log(response.data);
-                // this.setState({
-                //     // redirect: true
+                this.setState({
+                    redirect: true
 
-                // })
+                })
 
             })
         }
@@ -157,10 +157,10 @@ class Vendors extends React.Component {
 
 
     render() {
-        // const { redirect } = this.state;
-        // if (redirect) {
-        //     return <Redirect to="/" exact />
-        // }
+        const { redirect } = this.state;
+        if (redirect) {
+            return <Redirect to="/vendors" exact />
+        }
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -197,9 +197,10 @@ class Vendors extends React.Component {
                    
                     <input type="submit" value='vendors' />
                 </form>
+                <Link to="/vendors"> VendorList</Link><br/>
                 <Link to="/home">back</Link>
             </div>
         )
     }
 }
-export default Vendors;
+export default AddVendors;
