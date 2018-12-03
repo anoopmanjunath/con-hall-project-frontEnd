@@ -1,6 +1,5 @@
 import React from "react";  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-//import axios from "axios";
 //import Users from "./components/user";
 //import Location from "./components/location";
 import CatDrop from "./components/category";
@@ -11,7 +10,7 @@ import SignUp from "./components/signup";
 
 import Vendors from "./components/vendors";
 
-
+const Home = () => <h2>Home</h2>
 
 const AppRouter = () => (        
   <Router>
@@ -27,18 +26,20 @@ const AppRouter = () => (
           <li>
              <Link to="/SignUp">SignUp</Link>
             </li>
+           </ul>
 
-            <li><Link to="/Vendors"> Vendors</Link>
-            </li>
-        </ul> 
+
+            <Link to="/vendors"> Vendors</Link>
+            
+        
       </nav>
 
 
-          {/* <CatDrop />  */}
+        <CatDrop />  
          
             
            
-      <Route path="/" exact component={CatDrop} />
+          <Route path="/" exact component ={Home} />
       
       <Route path="/Login" exact component={Login}/>   
       

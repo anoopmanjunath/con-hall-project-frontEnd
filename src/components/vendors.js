@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+//import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 
@@ -18,7 +18,7 @@ class Vendors extends React.Component {
            addressError:'',
            Mobile:'',
            mobileError:'',
-            redirect: false
+            //redirect: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleName = this.handleName.bind(this);
@@ -44,7 +44,7 @@ class Vendors extends React.Component {
             errors.nameError = 'Username must atleast be 5 characters long.'
         }
 
-        if (!this.state.Company.length < 20) {
+        if (!this.state.Company.length  > 5) {
             isError = true;
             errors.companyError = 'Enter a company name.'
         }
@@ -98,18 +98,18 @@ class Vendors extends React.Component {
                 company:this.state.Company,
                 email: this.state.Email,
                 address: this.state.Address,
-                mobile: this.state.PhoneNum,
+                mobile: this.state.Mobile,
                 
             }
-            axios.post('http://localhost:3001/vendors/', submitValue).then((response) => {
-                console.log(response.data.vendors);
-                this.setState({
-                    redirect: true
-                })
+            axios.post('http://localhost:3001/vendors', submitValue).then((response) => {
+                console.log(response.data);
+                // this.setState({
+                //     // redirect: true
+
+                // })
 
             })
         }
-
     }
 
     handleName(e) {
@@ -157,10 +157,10 @@ class Vendors extends React.Component {
 
 
     render() {
-        const { redirect } = this.state;
-        if (redirect) {
-            return <Redirect to="/vendors" exact />
-        }
+        // const { redirect } = this.state;
+        // if (redirect) {
+        //     return <Redirect to="/" exact />
+        // }
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -188,14 +188,14 @@ class Vendors extends React.Component {
 
 
                     <label>Mobile
-                    <input type='number' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.mobileError} />
+                    <input type='text' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.mobileError} />
                     </label> <span>{this.state.mobileError}</span><br />
 
 
                   
 
                    
-                    <input type="submit" value='add' />
+                    <input type="submit" value='vendors' />
                 </form>
                 <Link to="/home">back</Link>
             </div>
