@@ -7,9 +7,9 @@ import CatDrop from "./components/category";
 //import Cati from "./components/cat";
 
 import Login from "./components/login";
+import SignUp from "./components/signup";
 
-
-
+import Vendors from "./components/vendors";
 
 
 
@@ -24,13 +24,13 @@ const AppRouter = () => (
           <li> 
           <Link to="/Login">LogIn</Link>
           </li>
-          {/* <li>
-            {/* <Link to="/SignUp">SignUp</Link>
+          <li>
+             <Link to="/SignUp">SignUp</Link>
             </li>
 
             <li><Link to="/Vendors"> Vendors</Link>
-            </li> */}
-        </ul> */}
+            </li>
+        </ul> 
       </nav>
 
 
@@ -42,9 +42,9 @@ const AppRouter = () => (
       
       <Route path="/Login" exact component={Login}/>   
       
-      {/* <Route path="/signUp" exact component={SignUp}/> 
+      <Route path="/signUp" exact component={SignUp}/> 
 
-      <Route path="/vendors" exact component={Vendors} /> */}
+      <Route path="/vendors" exact component={Vendors} />
 
     </div>
   </Router>
