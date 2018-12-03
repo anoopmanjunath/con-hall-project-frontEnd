@@ -29,17 +29,17 @@ const AppRouter = () => (
            </ul>
 
 
-            <Link to="/vendors"> Vendors</Link>
+             <Link to="/vendors"> Vendors</Link> 
             
         
       </nav>
 
 
-        <CatDrop />  
          
             
-           
           <Route path="/" exact component ={Home} />
+
+          <Route path="/" exact component={CatDrop}/>
       
       <Route path="/Login" exact component={Login}/>   
       
