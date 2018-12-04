@@ -11,6 +11,8 @@ import EditVendors from "./components/vendor-edit";
 import AddVendors from "./components/vendors";
 //import VendorTable from "./components/vendor-table";
 import VendorsList from "./components/vendor-list";
+import ViewOneVendor from "./components/show-one-vendor";
+
 
 
 const Home = () => <h2>Home</h2>
@@ -55,6 +57,8 @@ const AppRouter = () => (
       <Route path ="/vendors" exact component={VendorsList}/>
 
       <Route path ="/vendors/edit/:id" exact component= {EditVendors}/>
+
+      <Route path ="/vendors/:id" exact component={ViewOneVendor} />
       
     </div>
   </Router>

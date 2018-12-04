@@ -84,13 +84,13 @@ class EditVendors extends React.Component {
         console.log(errors);
         if (this.state.Name.length < 5) {
             isError = true;
-            errors.nameError = 'Username must atleast be more than five characters.'
+            errors.nameError = 'Enter Atleast 5 Letters.'
         }
 
 
         if (this.state.Company.length < 5) {
             isError = true;
-            errors.companyError = 'Company  must atleast be more than five characters.'
+            errors.companyError = 'Company Name atleast be more than five characters.'
         }
 
 
@@ -102,7 +102,7 @@ class EditVendors extends React.Component {
 
         if (this.state.Address.length < 10) {
             isError = true;
-            errors.addressError = "enter a valid address."
+            errors.addressError = "Enter a valid address."
         }
 
         if (this.state.Mobile.length !== 10) {
@@ -159,6 +159,7 @@ class EditVendors extends React.Component {
     }
 
     render() {
+        console.log(this.props.location);
         const { redirect } = this.state;
         if (redirect) {
             return <Redirect to="/vendors" exact />
@@ -195,7 +196,9 @@ class EditVendors extends React.Component {
                 </form>
                 
                 <Link to="/vendors">back</Link>
+
                 <button><Link to= {`vendors/delete/${this.props.match.params.id}`} onClick = {this.deleteHandle}>Delete</Link></button>
+
             </div>
         )
     }
