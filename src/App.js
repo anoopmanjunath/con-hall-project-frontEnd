@@ -7,9 +7,9 @@ import CatDrop from "./components/category";
 
 import Login from "./components/login";
 import SignUp from "./components/signup";
-
+import EditVendors from "./components/vendor-edit";
 import AddVendors from "./components/vendors";
-import VendorTable from "./components/vendor-table";
+//import VendorTable from "./components/vendor-table";
 import VendorsList from "./components/vendor-list";
 
 
@@ -53,6 +53,8 @@ const AppRouter = () => (
       <Route path="/vendors/add" exact component={AddVendors} />
 
       <Route path ="/vendors" exact component={VendorsList}/>
+
+      <Route path ="/vendors/edit/:id" exact component= {EditVendors}/>
       
     </div>
   </Router>

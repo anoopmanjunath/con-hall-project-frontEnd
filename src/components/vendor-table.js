@@ -25,6 +25,7 @@ const VendorTable = (props) => (
                       <td>{vendor.mobile}</td>
                       
                       <td><Link to= {{pathname: `vendors/${vendor._id}`, state: {vendor_details: vendor}}}>View</Link></td>
+                      
                       <td><Link to= {{pathname: `vendors/edit/${vendor._id}`, state: {vendor_details: vendor}}}>Edit</Link></td>
                       </tr>
                   ))
