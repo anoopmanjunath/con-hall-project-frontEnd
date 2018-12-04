@@ -1,15 +1,17 @@
 import React from "react";  
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {Switch} from 'react-router-dom';
 //import Users from "./components/user";
 import Location from "./components/location";
 import CatDrop from "./components/category";
 //import Cati from "./components/cat";
 
+
 import Login from "./components/login";
 import SignUp from "./components/signup";
 import EditVendors from "./components/vendor-edit";
 import AddVendors from "./components/vendors";
-//import VendorTable from "./components/vendor-table";
+
 import VendorsList from "./components/vendor-list";
 import ViewOneVendor from "./components/show-one-vendor";
 
@@ -47,7 +49,7 @@ const AppRouter = () => (
           <Route path="/" exact component={CatDrop}/>
 
           <Route path="/" exact component={Location}/>
-      
+          <Switch>
       <Route path="/Login" exact component={Login}/>   
       
       <Route path="/signUp" exact component={SignUp}/> 
@@ -59,7 +61,7 @@ const AppRouter = () => (
       <Route path ="/vendors/edit/:id" exact component= {EditVendors}/>
 
       <Route path ="/vendors/:id" exact component={ViewOneVendor} />
-      
+      </Switch>
     </div>
   </Router>
 );

@@ -5,12 +5,13 @@ class ViewOneVendor extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            vendor: this.props.location.state.vendor_details
+            
+            vendor : this.props.location.state.vendor_details
         }
     }
 
     render() {
-        //console.log(this.props.location);
+        console.log(this.props.location);
         return (
             <div>
                 <table border= '2'>
