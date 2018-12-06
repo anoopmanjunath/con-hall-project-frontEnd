@@ -27,7 +27,8 @@ class EditVendors extends React.Component {
         this.handleEmail = this.handleEmail.bind(this);
         this.handleAddress = this.handleAddress.bind(this);
         this.handleMobile = this.handleMobile.bind(this);
-        this.deleteHandle = this.deleteHandle.bind(this);
+
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     handleName(e) {
@@ -149,22 +150,23 @@ class EditVendors extends React.Component {
     }
 }
 
-    deleteHandle(e) {
+    handleDelete(e) {
         e.preventDefault();
 
         axios.delete(`http://localhost:3001/vendors/${this.props.match.params.id}`).then((response) => {
         console.log(response);    
+        this.setState({vendors: response.data})
         this.setState({redirect: true});
         })
     }
 
     render() {
-        console.log(this.props.location);
+
         const { redirect } = this.state;
         if (redirect) {
             return <Redirect to="/vendors" exact />
         }
-        console.log(this.props.location);
+    
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -197,7 +199,7 @@ class EditVendors extends React.Component {
                 
                 <Link to="/vendors">back</Link>
 
-                <button><Link to= {`vendors/delete/${this.props.match.params.id}`} onClick = {this.deleteHandle}>Delete</Link></button>
+                <button><Link to= {`vendors/delete/${this.props.match.params.id}`} onClick = {this.handleDelete}>Delete</Link></button>
 
             </div>
         )

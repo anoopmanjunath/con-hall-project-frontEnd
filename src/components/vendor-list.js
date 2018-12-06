@@ -21,7 +21,8 @@ class VendorsList extends React.Component {
       return (
         <div>
           <VendorTable vendor_details={this.state.vendors}/><br/>
-          <button><Link to='/vendors/new'>Add</Link></button>
+          
+          <button><Link to='/vendors/add'>Add</Link></button>
         </div>
       )
     }

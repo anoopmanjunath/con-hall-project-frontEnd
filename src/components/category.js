@@ -36,7 +36,7 @@ render(){
   return(
     <label>
       <select className="button" onClick={this.showDropdownMenu}> Category>
-      <option value=" ">Select</option>
+      <option value=" ">Any</option>
       
       <option value="Corporate Event">Corporate Event</option>
       <option value="Marriage">Marriage</option>

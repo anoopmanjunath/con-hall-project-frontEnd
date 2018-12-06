@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {Redirect} from 'react-router-dom';
+//import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
 
@@ -103,10 +103,10 @@ class AddVendors extends React.Component {
             }
             axios.post('http://localhost:3001/vendors', submitValue).then((response) => {
                 console.log(response.data);
-                this.setState({
-                    redirect: true
+                // this.setState({
+                //     redirect: true
 
-                })
+                // })
 
             })
         }
@@ -157,10 +157,10 @@ class AddVendors extends React.Component {
 
 
     render() {
-        const { redirect } = this.state;
-        if (redirect) {
-            return <Redirect to="/vendors" exact />
-        }
+        // const { redirect } = this.state;
+        // if (redirect) {
+        //     return <Redirect to="/vendors" exact />
+        // }
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -197,7 +197,8 @@ class AddVendors extends React.Component {
                    
                     <input type="submit" value='vendors' />
                 </form>
-                <Link to="/vendors"> VendorList</Link><br/>
+                 {/* <Link to="/vendors"> VendorList</Link><br/> */}
+                 
                 <Link to="/home">back</Link>
             </div>
         )

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 const VendorTable = (props) => (
     <table border = '2'>
           <thead>
-              <tr>
-                  <th>id</th>
+              <tr>                  
                   <th>name</th>
                   <th>company</th>
                   <th>email</th>
@@ -13,15 +12,15 @@ const VendorTable = (props) => (
                   <th>mobile </th>
               </tr>
           </thead>
+          
           <tbody>
               {
                   props.vendor_details.map((vendor, index) => (
                       <tr key = {index}>
-                      <td>{vendor._id}</td>
                       <td>{vendor.name}</td>
                       <td>{vendor.company}</td>
                       <td>{vendor.email}</td>
-                     <td>{vendor.address}</td>
+                      <td>{vendor.address}</td>
                       <td>{vendor.mobile}</td>
                       
                       <td><Link to= {{pathname: `vendors/${vendor._id}`, state: {vendor_details: vendor}}}>View</Link></td>
