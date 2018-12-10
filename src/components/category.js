@@ -1,6 +1,7 @@
  import React from 'react';
 //import { Dropdown } from 'reactstrap';
 
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
 class CatDrop extends React.Component {
@@ -34,18 +35,37 @@ showDropdownMenu(event) {
 
 render(){
   return(
-    <label>
-      <select className="button" onClick={this.showDropdownMenu}> Category>
-      <option value=" ">Any</option>
+     
+      <Dropdown className="button" onClick={this.showDropdownMenu}> Category>
+    <DropdownToggle caret>
+    Any
+  </DropdownToggle>
+
+       {/* <option value=" ">Any</option> */}
+       <DropdownMenu>
       
-      <option value="Corporate Event">Corporate Event</option>
-      <option value="Marriage">Marriage</option>
-      <option value="Engagement">Engagement</option>
-      <option value="Birthday Party">Birthday Party</option>
-      <option value="Cocktail Party">Cocktail Party</option>
+       <DropdownItem Corporate Event>Corporate Event</DropdownItem>
+       <DropdownItem Marriage>Marriage</DropdownItem>
+       <DropdownItem Engagement>Engagement</DropdownItem>
+       <DropdownItem Birthday Party>Birthday Party</DropdownItem>
+       <DropdownItem Cocktail Party>Cocktail Party</DropdownItem>
+       </DropdownMenu>
       
-      </select>
-      </label>
+       </Dropdown>
+       
+
+    // <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+    //     <DropdownToggle caret>
+    //       Dropdown
+    //     </DropdownToggle>
+    //     <DropdownMenu>
+    //       <DropdownItem header>Header</DropdownItem>
+    //       <DropdownItem disabled>Action</DropdownItem>
+    //       <DropdownItem>Another Action</DropdownItem>
+    //       <DropdownItem divider />
+    //       <DropdownItem>Another Action</DropdownItem>
+    //     </DropdownMenu>
+    //   </Dropdown>
   )
 }
   

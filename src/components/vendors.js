@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 //import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class AddVendors extends React.Component {
     constructor(props){
@@ -66,10 +66,7 @@ class AddVendors extends React.Component {
             isError = true;
             errors.mobileError = "Enter a valid mobile number";
 }
-        
-        
-        
-        this.setState({
+         this.setState({
             ...this.state,
             ...errors
         })
@@ -162,44 +159,56 @@ class AddVendors extends React.Component {
         //     return <Redirect to="/vendors" exact />
         // }
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name
-                <input type='text' onChange={this.handleName} value={this.state.Name} errortext={this.state.nameError} />
-                    </label> <span>{this.state.nameError}</span><br />
+            <div className="row justify-content-md-center">
 
-           
-           <label>Company
-                <input type='text' onChange={this.handleCompany} value={this.state.Company} errortext={this.state.companyError} />
-                    </label> <span>{this.state.companyError}</span><br />
+                <Form onSubmit={this.handleSubmit}>
 
-   
-                    <label>Email
-                    <input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
-                    </label> <span>{this.state.emailError}</span><br />
+                <FormGroup>
+                    <Label>Name
+                <Input type='text' onChange={this.handleName} value={this.state.Name} errortext={this.state.nameError} />
+                    </Label> <span>{this.state.nameError}</span><br />
+                   </FormGroup>
 
 
+           <FormGroup>
+           <Label>Company
+                <Input type='text' onChange={this.handleCompany} value={this.state.Company} errortext={this.state.companyError} />
+                    </Label> <span>{this.state.companyError}</span><br />
+                </FormGroup>
 
-                <label>Address
-                <input type='textArea' onChange={this.handleAddress} value={this.state.Address} errortext={this.state.addressError} />
-                    </label> <span>{this.state.addressError}</span><br />
+
+                  <FormGroup>
+                    <Label>Email
+                    <Input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
+                    </Label> <span>{this.state.emailError}</span><br />
+                      </FormGroup>
+
+                       <FormGroup>
+                <Label>Address
+                <Input type='textArea' onChange={this.handleAddress} value={this.state.Address} errortext={this.state.addressError} />
+                    </Label> <span>{this.state.addressError}</span><br />
+                    </FormGroup>
 
 
-
-
-                    <label>Mobile
-                    <input type='text' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.mobileError} />
-                    </label> <span>{this.state.mobileError}</span><br />
-
+                      <FormGroup>
+                    <Label>Mobile
+                    <Input type='text' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.mobileError} />
+                    </Label> <span>{this.state.mobileError}</span><br />
+                   </FormGroup>
 
                   
 
                    
-                    <input type="submit" value='vendors' />
-                </form>
+                    <Input type="submit" value='vendors' />
+               <br/>
+
+                    <Link to="/home">back</Link>
+                </Form>
+
+                
                  {/* <Link to="/vendors"> VendorList</Link><br/> */}
                  
-                <Link to="/home">back</Link>
+                
             </div>
         )
     }

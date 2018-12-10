@@ -11,7 +11,9 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem } from 'reactstrap';
+  DropdownItem,
+  CardImg, 
+  Card} from 'reactstrap';
 
  class Header extends React.Component {
   constructor(props) {
@@ -29,8 +31,9 @@ import {
   }
   render() {
     return (
+      <Card>
         <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">BooKmyParty</NavbarBrand>
+          <NavbarBrand href="/">BookMyParty</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -47,8 +50,9 @@ import {
             </Nav>
           </Collapse>
         </Navbar>
-
         
+        <CardImg  width="90%" src="https://www.hkcec.com/sites/default/files/imce/CHall3.jpg" alt="Card image cap" />
+        </Card>
     );
   }
 }

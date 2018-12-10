@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 
 class SignUp extends React.Component {
@@ -48,7 +49,7 @@ class SignUp extends React.Component {
         if (this.state.Mobile.length !== 10) {
             isError = true;
             errors.mobileError = "Enter a valid mobile number";
-}
+        }
 
         
         if (this.state.Password === '') {
@@ -134,25 +135,52 @@ class SignUp extends React.Component {
             return <Redirect to="/users" exact />
         }
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name
-                <input type='text' onChange={this.handleName} value={this.state.Name} errortext={this.state.nameError} />
-                    </label> <span>{this.state.nameError}</span><br />
-                    <label>Email
-                    <input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
-                    </label> <span>{this.state.emailError}</span><br />
-                    <label>Mobile
-                    <input type='number' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.phoneNumError} />
-                    </label> <span>{this.state.mobileError}</span><br />
-                    <label>Password
-                    <input type='text' onChange={this.handlePassword} value={this.state.Password} errortext={this.passwordError} />
-                    </label> <span>{this.state.passwordError}</span><br />
+            <div className="row justify-content-md-center">
+
+
+            
+        
+                <Form onSubmit={this.handleSubmit}>
+
+                   <FormGroup>
+                    <Label>Name
+
+                <Input type='text' onChange={this.handleName} value={this.state.Name} errortext={this.state.nameError} />
+                    </Label> <span>{this.state.nameError}</span><br />
+
+                    </FormGroup>
+
+
+                    <FormGroup>
+                   
+                    <Label>Email
+                    <Input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
+                    </Label> <span>{this.state.emailError}</span><br />
+                    </FormGroup>
+
+                    <FormGroup>
+                    <Label>Mobile
+                    <Input type='number' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.phoneNumError} />
+                    </Label> <span>{this.state.mobileError}</span><br />
+                      </FormGroup>
+
+
+                      <FormGroup>
+                    <Label>Password
+                    <Input type='text' onChange={this.handlePassword} value={this.state.Password} errortext={this.passwordError} />
+                    </Label> <span>{this.state.passwordError}</span><br />
+                    </FormGroup>
 
                    
                     <input type="submit" value='signup' />
-                </form>
-                <Link to="/login">Already a User</Link>
+                    <br/>
+
+                     <Link to="/login">Already a User</Link>
+                </Form>
+                
+
+                
+                  
             </div>
         )
     }

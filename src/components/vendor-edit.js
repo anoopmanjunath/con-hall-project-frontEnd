@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 class EditVendors extends React.Component {
     constructor(props) {
         super(props);
@@ -82,7 +82,7 @@ class EditVendors extends React.Component {
             mobileError: '',
             
         };
-        console.log(errors);
+       // console.log(errors);
         if (this.state.Name.length < 5) {
             isError = true;
             errors.nameError = 'Enter Atleast 5 Letters.'
@@ -109,9 +109,7 @@ class EditVendors extends React.Component {
         if (this.state.Mobile.length !== 10) {
             isError = true;
             errors.mobileError = "Enter a valid mobile number";
-        }
-
-        
+}
         this.setState({
             ...this.state,
             ...errors
@@ -152,9 +150,11 @@ class EditVendors extends React.Component {
 
     handleDelete(e) {
         e.preventDefault();
-
+//console.log(this.match.params.id,"id");
         axios.delete(`http://localhost:3001/vendors/${this.props.match.params.id}`).then((response) => {
+
         console.log(response);    
+
         this.setState({vendors: response.data})
         this.setState({redirect: true});
         })
@@ -168,39 +168,57 @@ class EditVendors extends React.Component {
         }
     
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name
-                    <input type='text' onChange={this.handleName} value={this.state.Name} errortext={this.state.nameError} />
-                    </label><span>{this.state.nameError}</span><br />
- 
-                    <label>Company
-                    <input type="text" onChange={this.handleCompany} value={this.state.Company} errortext={this.state.companyError} />
-                    </label><span>{this.state.companyError}</span><br />
+            <div className="row justify-content-md-center">
+                <Form onSubmit={this.handleSubmit}>
 
+                <FormGroup>
+                    <Label>Name
+                    <Input type='text' onChange={this.handleName} value={this.state.Name} errortext={this.state.nameError} />
+                    </Label><span>{this.state.nameError}</span><br />
+                  </FormGroup>
 
-                    <label>Email
-                    <input type="text" onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
-                    </label><span>{this.state.emailError}</span><br />
+                  <FormGroup>
+                    <Label>Company
+                    <Input type="text" onChange={this.handleCompany} value={this.state.Company} errortext={this.state.companyError} />
+                    </Label><span>{this.state.companyError}</span><br />
+                   </FormGroup>
+                  
+                  <FormGroup>
+                    <Label>Email
+                    <Input type="text" onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
+                    </Label><span>{this.state.emailError}</span><br />
+                    </FormGroup>
 
-                    <label>Address
-                    <input type="textArea" onChange={this.handleAddress} value={this.state.Address} errortext={this.state.addressError} />
-                    </label><span>{this.state.addressError}</span><br />
+                    <FormGroup>
+                    <Label>Address
+                    <Input type="textArea" onChange={this.handleAddress} value={this.state.Address} errortext={this.state.addressError} />
+                    </Label><span>{this.state.addressError}</span><br />
+                    </FormGroup>
 
-                    <label>Mobile
-                    <input type='text' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.mobileError} />
-                    </label><span>{this.state.mobileError}</span><br />
-
+                    <FormGroup>
+                    <Label>Mobile
+                    <Input type='text' onChange={this.handleMobile} value={this.state.Mobile} errortext={this.state.mobileError} />
+                    </Label><span>{this.state.mobileError}</span><br />
+                     </FormGroup>
                     
 
                     
-                    <input type="submit" value='Edit vendors' />
-                </form>
+                    <Input type="submit" value='Edit vendors' />
+                    <br/>
+
+                   
+                    
+
+<Button><Link to= {`vendors/delete/${this.props.match.params.id}`} onClick = {this.handleDelete}>Delete</Link></Button>
+
+<br/>
+<br/>
+
+
+<Button> <Link to="/vendors">back</Link></Button>
+                </Form>
                 
-                <Link to="/vendors">back</Link>
-
-                <button><Link to= {`vendors/delete/${this.props.match.params.id}`} onClick = {this.handleDelete}>Delete</Link></button>
-
+                
             </div>
         )
     }

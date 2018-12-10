@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class SignUp extends React.Component {
     constructor(props){
@@ -108,21 +108,28 @@ class SignUp extends React.Component {
             return <Redirect to="/users" exact />
         }
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
+            <div className="row justify-content-md-center">
+                <Form onSubmit={this.handleSubmit}>
                     
-                    <label>Email
-                    <input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
-                    </label> <span>{this.state.emailError}</span><br />
+                    <FormGroup>
+                    <Label>Email
+                    <Input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
+                    </Label> <span>{this.state.emailError}</span><br />
+                    </FormGroup>
                     
-                    <label>Password
-                    <input type='text' onChange={this.handlePassword} value={this.state.Password} errortext={this.passwordError} />
-                    </label> <span>{this.state.passwordError}</span><br />
+                    <FormGroup>
+                    <Label>Password
+                    <Input type='text' onChange={this.handlePassword} value={this.state.Password} errortext={this.passwordError} />
+                    </Label> <span>{this.state.passwordError}</span><br />
+                    </FormGroup>
 
                    
                     <input type="submit" value='login' />
-                </form>
-                <Link to="/signUp">Not An User</Link>
+                    <br/>
+
+                    <Link to="/signUp">Not An User</Link>
+                </Form>
+                
             </div>
         )
     }
