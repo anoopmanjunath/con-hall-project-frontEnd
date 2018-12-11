@@ -3,7 +3,7 @@ import axios from 'axios';
 //import VendorTable from './vendor-table';
 import { Link } from 'react-router-dom';
 import { Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle,Button } from 'reactstrap';
+    CardTitle, CardSubtitle,Button,Col,Row } from 'reactstrap';
   
 
 class HallPage extends React.Component {
@@ -16,35 +16,42 @@ class HallPage extends React.Component {
   
     componentDidMount() {
       axios.get('http://localhost:3001/halls').then((response) => {
+        console.log(response.data);
         this.setState({halls: response.data});
-      });
+      }).catch((err) => {
+        console.log(err)
+      })
     }
   
     render() {
       return (
-        
-<div>
-        <Card>
-        <CardImg top width="100%" src="https://media.weddingz.in/images/38592bf8be9cdac03d869c671c4c52b3/nche.jpg" alt="Card image cap" />
+          <div>
+            <h1>Halls List</h1>
 
-
-        
-        <CardBody>
-          <CardTitle></CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          
-          <CardImg top width="100%" src="https://www.hkcec.com/sites/default/files/imce/CHall3.jpg" alt="Card im" />
-
-
-          <CardTitle>Card title</CardTitle>
-          <CardSubtitle>Card subtitle</CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-
-        </CardBody>
-      </Card>
-    </div>
+              {this.state.halls.map((hall, index) => {
+                console.log(hall, "hall")
+                   return (<Row key={index} className="row justify-content-md-center">
+                   <Col sm="6">
+                      <Card body>
+                      <CardTitle className="row justify-content-md-center"> <h5>Name : </h5> {hall.name.toUpperCase()}</CardTitle>
+                      <CardText className="row justify-content-md-center"> <h5>Ceremonies : </h5>{hall.ceremonies}</CardText>
+                      {/* <CardText className="row justify-content-md-center"> Category: {hall.category}</CardText> */}
+                      <CardText className="row justify-content-md-center"> <h5>BasePrice : </h5>{hall.basePrice}</CardText>
+                      <CardText className="row justify-content-md-center"><h5> Capacity : </h5>{hall.capacity}</CardText>
+                      {/* <CardText className="row justify-content-md-center"><h5> Parking : </h5>{hall.parking}</CardText> */}
+                      <CardText className="row justify-content-md-center"><h5> Description : </h5>{hall.description}</CardText>
+                      <Button color="white">
+                          <Link to={{pathname:`/halls/${hall._id}`, state:{hall: hall}}  }>
+                          </Link>
+                      </Button>
+                      </Card>
+                   </Col>
+               </Row>)
+              })}
+             
+              <Link to="/halls"></Link>
+          </div>
       )
-    }
+}
   } 
 export default HallPage

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {Switch} from 'react-router-dom';
 //import Users from "./components/user";
 import Location from "./components/location";
-import CatDrop from "./components/category";
+//import CatDrop from "./components/category";
 //import Cati from "./components/cat";
  import Login from "./components/login";
 import SignUp from "./components/signup";
@@ -17,38 +17,52 @@ import HallPage from "./components/halls";
 import { Navbar } from "reactstrap";
 
 
-const Home = () => <h2>Home</h2>
+import { Container, Row, Col } from 'reactstrap';
+
+import { CardImg } from "reactstrap";
+import LogIn from "./components/login";
+
+
+
+const Home = () => <h2> </h2>
 
 const AppRouter = () => (        
   <Router>
     <div>
 
-      <Header/>
+      {/* <Header/> */}
       <Navbar>
-      
-            <Link to="/"></Link>
+<Container>
+        <Row>
+          <Col xs="6" sm="4">   <Link to="/">BookMyParty</Link> </Col>
+        </Row>
+      <Row>
+      <Col xs="6" sm="4">
+      <Link to="/halls" >Hall</Link>
+      </Col>
+        </Row>
            
+          <Row>
+          <Col xs="6" sm="4">  <Link to="/Login">LogIn</Link>
+          /
+          <Link to="/SignUp">SignUp</Link>
+         /
+          <Link to="/vendors" >Vendors </Link> </Col>
+         
+           </Row>
           
-          <Link to="/Login"></Link>
-          
-          
-             <Link to="/SignUp"></Link>
-             
- 
 
-             <Link to="/vendors" ></Link> 
-
-             <Link to="/halls">hall</Link>
-           
+             {/* <Link to="/halls">hall</Link> */}
+           </Container>
         
       </Navbar>
 
-
-         
+ {/* <CardImg  width="90%" src="https://www.hkcec.com/sites/default/files/imce/CHall3.jpg" alt="Card image cap" />
+           */}
             
           <Route path="/" exact component ={Home} />
 
-          <Route path="/" exact component={CatDrop}/>
+          {/* <Route path="/" exact component={CatDrop}/> */}
 
           <Route path="/" exact component={Location}/>
 

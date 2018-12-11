@@ -15,7 +15,7 @@ class LogIn extends React.Component {
            
             Password:'',
             passwordError:'',
-           // redirect: false,
+            redirect: false,
 
             modal: false
         }
@@ -28,6 +28,12 @@ class LogIn extends React.Component {
          this.handlePassword = this.handlePassword.bind(this);
 
     }
+    toggleModal = () =>{
+            this.setState({
+              modal:!this.state.modal
+            })
+          }
+
 
     toggle() {
         this.setState({
@@ -115,18 +121,19 @@ class LogIn extends React.Component {
 
 
     render() {
-        // const { redirect } = this.state;
-        // if (redirect) {
-        //     return <Redirect to="/users" exact />
-        // }
+        const { redirect } = this.state;
+        if (redirect) {
+            return <Redirect to="/users" exact />
+        }
 
         
-       // const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
+       const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
         return (
+            
             <div className="row justify-content-md-center">
         
          
-       
+         
         
                 <Form onSubmit={this.handleSubmit.toggle}>                    
                     
@@ -134,7 +141,9 @@ class LogIn extends React.Component {
                     <Label>Email
                     <Input type='text' onChange={this.handleEmail} value={this.state.Email} errortext={this.state.emailError} />
                     </Label> <span>{this.state.emailError}</span><br />
+                   
                     </FormGroup>
+                    
                     
                     <FormGroup>
                     <Label>Password
@@ -152,8 +161,8 @@ class LogIn extends React.Component {
                 </Form>
                
             
-                
-            </div>
+              </div>  
+            
         )
     }
 }

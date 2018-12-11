@@ -17,7 +17,7 @@ class SignUp extends React.Component {
             mobileError:'',
             Password:'',
             passwordError:'',
-            //redirect: false
+            redirect: false,
 
             modal:false
         }
@@ -141,10 +141,10 @@ class SignUp extends React.Component {
 
 
     render() {
-        // const { redirect } = this.state;
-        // if (redirect) {
-        //     return <Redirect to="/users" exact />
-        // }
+        const { redirect } = this.state;
+        if (redirect) {
+            return <Redirect to="/users" exact />
+        }
         return (
             <div className="row justify-content-md-center">
 
