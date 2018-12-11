@@ -14,6 +14,7 @@ import ViewOneVendor from "./components/show-one-vendor";
 import Header from "./components/Header/header";
 
 import HallPage from "./components/halls";
+import { Navbar } from "reactstrap";
 
 
 const Home = () => <h2>Home</h2>
@@ -23,8 +24,8 @@ const AppRouter = () => (
     <div>
 
       <Header/>
-      <nav>
-        
+      <Navbar>
+      
             <Link to="/"></Link>
            
           
@@ -40,7 +41,7 @@ const AppRouter = () => (
              <Link to="/halls">hall</Link>
            
         
-      </nav>
+      </Navbar>
 
 
          

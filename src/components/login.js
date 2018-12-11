@@ -2,9 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {  Form, FormGroup, Label, Input, FormText, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
 
-class SignUp extends React.Component {
+
+class LogIn extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -14,8 +15,12 @@ class SignUp extends React.Component {
            
             Password:'',
             passwordError:'',
-            redirect: false
+           // redirect: false,
+
+            modal: false
         }
+
+        this.toggle = this.toggle.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
        
         this.handleEmail = this.handleEmail.bind(this);
@@ -23,6 +28,13 @@ class SignUp extends React.Component {
          this.handlePassword = this.handlePassword.bind(this);
 
     }
+
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
+    
     validate = () => {
         let isError = false;
         const errors = {
@@ -73,7 +85,7 @@ class SignUp extends React.Component {
                 
                 password: this.state.Password
             }
-            axios.post('http://localhost:3001/Login /', submitValue).then((response) => {
+            axios.post('http://localhost:3001/LogIn /', submitValue).then((response) => {
                 console.log(response.data.Login);
                 this.setState({
                     redirect: true
@@ -103,13 +115,20 @@ class SignUp extends React.Component {
 
 
     render() {
-        const { redirect } = this.state;
-        if (redirect) {
-            return <Redirect to="/users" exact />
-        }
+        // const { redirect } = this.state;
+        // if (redirect) {
+        //     return <Redirect to="/users" exact />
+        // }
+
+        
+       // const closeBtn = <button className="close" onClick={this.toggle}>&times;</button>;
         return (
             <div className="row justify-content-md-center">
-                <Form onSubmit={this.handleSubmit}>
+        
+         
+       
+        
+                <Form onSubmit={this.handleSubmit.toggle}>                    
                     
                     <FormGroup>
                     <Label>Email
@@ -122,16 +141,20 @@ class SignUp extends React.Component {
                     <Input type='text' onChange={this.handlePassword} value={this.state.Password} errortext={this.passwordError} />
                     </Label> <span>{this.state.passwordError}</span><br />
                     </FormGroup>
+                    
 
+              
                    
                     <input type="submit" value='login' />
                     <br/>
 
                     <Link to="/signUp">Not An User</Link>
                 </Form>
+               
+            
                 
             </div>
         )
     }
 }
-export default SignUp;
+export default LogIn;

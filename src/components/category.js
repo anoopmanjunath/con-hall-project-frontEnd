@@ -36,7 +36,7 @@ showDropdownMenu(event) {
 render(){
   return(
      
-      <Dropdown className="button" onClick={this.showDropdownMenu}> Category>
+      <Dropdown className="button" onClick={this.showDropdownMenu}> 
     <DropdownToggle caret>
     Any
   </DropdownToggle>

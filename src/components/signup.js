@@ -17,8 +17,12 @@ class SignUp extends React.Component {
             mobileError:'',
             Password:'',
             passwordError:'',
-            redirect: false
+            //redirect: false
+
+            modal:false
         }
+        this.toggle = this.toggle.bind(this);
+
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleName = this.handleName.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
@@ -26,6 +30,13 @@ class SignUp extends React.Component {
          this.handlePassword = this.handlePassword.bind(this);
 
     }
+    toggle() {
+        this.setState({
+          modal: !this.state.modal
+        });
+      }
+    
+
     validate = () => {
         let isError = false;
         const errors = {
@@ -130,10 +141,10 @@ class SignUp extends React.Component {
 
 
     render() {
-        const { redirect } = this.state;
-        if (redirect) {
-            return <Redirect to="/users" exact />
-        }
+        // const { redirect } = this.state;
+        // if (redirect) {
+        //     return <Redirect to="/users" exact />
+        // }
         return (
             <div className="row justify-content-md-center">
 
